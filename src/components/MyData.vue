@@ -10,7 +10,6 @@
         <img :src="img.img" alt="" v-for="img in imgButton" @click="changeText(img.img,img.text)">
       </div>
     </div>
-    <p>© Created by Chris Piech. Updated in 2022 (hopefully it isn't something like 2023 when you are reading this).</p>
   </div>
 </template>
 

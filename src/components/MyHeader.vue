@@ -1,68 +1,51 @@
 <template>
   <div id="main">
     <div class="info">
-      <img src="../assets/chrisP.jpg"
-           alt="">
+      <img :src="this.form.scholar_photo"
+           alt="" style="object-fit: cover">
       <div class="introduce">
-        <h1>Chris Piech</h1>
+        <h1>{{this.form.scholar_name}}</h1>
         <p></p>
         <hr>
         <p></p>
         <p>
-          Assistant Professor of
-          <a href="https://cs.stanford.edu/">Computer Science</a>
-          Education, Stanford University.
+          Title: {{this.form.title}}
           <br>
-          PhD advised by
-          <a href="https://geometry.stanford.edu/member/guibas/">Leo Guibas</a>
-          and
-          <a href="http://robotics.stanford.edu/users/sahami/bio.html">Mehran Sahami</a>
-          .
-        </p>
-        <p>
-          Office: Durand Building, Room 305
+          Department: <a href="https://cs.stanford.edu/">{{this.form.department}}</a>
           <br>
-          Email: piech at cs.stanford.edu
+          Office: {{this.form.office}}
           <br>
-          Twitter: <a href="https://twitter.com/chrispiech">@chrispiech</a>
+          Email: {{this.form.email}}
           <br>
-          <a href="https://piechlab.stanford.edu/">The Piech Lab</a>
+          Homepage: <a :href="this.form.personal_homepage">{{this.form.personal_homepage}}</a>
+          <br>
+          Lab: <a :href="this.form.lab_homepage">{{this.form.lab_name}}</a>
         </p>
       </div>
     </div>
     <div class="text">
       <p>
-        <em>I was born and grew up in Nairobi, Kenya. When I was twelve I moved to Kuala Lumpur, Malaysia where I lived until I came to Stanford for university, liked it a lot and stayed. I love teaching and I'm into exploring our world (through both science and travelling). My research is in machine learning to understand human learning.</em>
+        <em>{{this.form.biography}}</em>
       </p>
     </div>
     <div class="outer">
       <div class="inner">
-        <div>News (June, 2022):</div>
-        <b>Grading Open-Ended Midterms:</b>
-        Our work to rubric-grade novel open-ended exams was covered in the New York Times. See the
-        <a href="http://ai.stanford.edu/blog/prototransformer/">HAI blog.</a>
+        <div>News:</div>
+        <a :href="this.form.news[0].link">{{this.form.news[0].title}}</a>
+        {{this.form.news[0].text}}
         <br>
-        <b>Code in Place:</b>
-        As a service project taught CS106A to 20k students with 2k volunteer TAs across via Code in Place. It was a good time!
+        <a :href="this.form.news[1].link">{{this.form.news[1].title}}</a>
+        {{this.form.news[1].text}}
         <br>
-        <b>AI Visual Acuity Test: </b>
-        Our new
-        <a href="https://myeyes.ai/"> AI based algorithm </a>
-        for precisely measuring vision was covered in
-        <a href="https://www.science.org/content/article/eye-robot-artificial-intelligence-dramatically-improves-accuracy-classic-eye-exam">Science Magazine </a>
-        and
-        <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(21)02149-8/fulltext">the Lancet </a>
-        [<a href="https://arxiv.org/pdf/1906.01811.pdf">paper</a>]
+        <a :href="this.form.news[2].link">{{this.form.news[2].title}}</a>
+        {{this.form.news[2].text}}
         <br>
-        <b>HAI Hoffman-Yee grant: </b>
-        A group of CS and Education professors were recently awarded an HAI Hoffman-Yee grant and won a renewal.
+        <a :href="this.form.news[3].link">{{this.form.news[3].title}}</a>
+        {{this.form.news[3].text}}
         <br>
-        <b>Best paper awards:</b>
-        The lab is humbled to have received recent best paper awards from
-        <a href="https://stanford.edu/~cpiech/bio/papers/variationalItemResponseTheory.pdf">EDM'20</a>,
-        <a href="https://stanford.edu/~cpiech/bio/papers/crossBorderCoteaching.pdf">L@S'20</a>
-        and
-        <a href="https://stanford.edu/~cpiech/bio/papers/zeroShotCode.pdf">AAAI'19</a>
+        <a :href="this.form.news[4].link">{{this.form.news[4].title}}</a>
+        {{this.form.news[4].text}}
+        <br>
       </div>
     </div>
   </div>
@@ -70,7 +53,47 @@
 
 <script>
 export default {
+  name:'MyHeader',
+  data() {
+    return {
+      form: {
+        scholar_photo:require("../assets/TangBo.png"),
+        scholar_name:'唐博',
+        title: '助理教授',
+        department:'计算机科学与工程',
+        office: '工学院南楼317室',
+        email: 'tangb3@sustech.edu.cn',
+        personal_homepage: 'https://acm.sustech.edu.cn/btang/',
+        lab_name: 'DBGroup',
+        lab_homepage: 'https://dbgroup.sustech.edu.cn/',
+        biography:'\n' +
+            'Bo Tang received the PhD Degree in the Department of Computing at Hong Kong Polytechnic University. He was a member of Database Research Group. He was supervised by Dr. Ken Yiu. He was a visiting researcher at MonetDB group (Amsterdam) and Microsoft Research Asia (Beijing). Before that, he obtained his BEng degree in computer science from Sichuan University.',
+        news:[
+          {title:'中国计算机学会CCF青年人才发展计划 (2022)',
+           text:'',
+           link:'https://www.ccf.org.cn/Media_list/2022-11-11/776429.shtml'},
+          {title:'Shenzhen Excellent Teaching Award, 深圳市优秀教师 (2022)',
+           text:'',
+           link:''},
+          {title:'Shenzhen Youth May Fourth Medal, 深圳青年五四奖章(集体)',
+           text:'',
+           link:''},
+          {title:'ACM SIGMOD China Rising Star, ACM SIGMOD中国新星奖 (2021)',
+           text:'',
+           link:''},
+          {title:'Overseas High-Caliber Personnel Level-C, 深圳市海外高层次人才“孔雀计划”C类 (2020)',
+           text:'',
+           link:''}
+        ]
 
+      },
+    }
+    },
+  methods:{
+    link(url){
+      window.location.href=url;
+    }
+  }
 }
 </script>
 

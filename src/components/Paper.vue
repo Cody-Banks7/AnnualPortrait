@@ -27,7 +27,7 @@ export default {
 <style scoped>
 .paper{
   width: 405px;
-  height: 130px;
+  height: 170px;
   padding: 19px;
   border: 1px solid #ddd;
   border-radius: 5px;
